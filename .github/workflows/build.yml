@@ -30,11 +30,22 @@ jobs:
         name: tool-minified
         path: minified/tool-${{ github.ref_name }}-min.js
 
+    - name: Stash Minified Version
+      run: |
+        git stash push -m "Minified version: tool-${{ github.ref_name }}-min.js"
+
+    - name: Checkout Main Branch
+      run: |
+        git checkout main
+
+    - name: Apply Minified Version
+      run: |
+        git stash apply
+
     - name: Commit minified version
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git checkout -b ${{ github.ref_name }}
         git add minified/tool-${{ github.ref_name }}-min.js
         git commit -m "Add minified version: tool-${{ github.ref_name }}-min.js"
         git push
