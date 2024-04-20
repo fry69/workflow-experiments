@@ -12,8 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup Bun
-      uses: ./.github/workflows/setup-bun.yml
+    - name: Install Bun
+      shell: bash
+      run: |
+        curl -fsSL https://bun.sh/install | bash
+        echo "$HOME/.bun/bin" >> $GITHUB_PATH
 
     - name: Build minified version
       run: |
