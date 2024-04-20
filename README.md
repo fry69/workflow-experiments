@@ -1,3 +1,3 @@
-# worfklow-experiments
+# workflow-experiments
 
 This is a test repository for my workflow experiments.
