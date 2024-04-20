@@ -40,12 +40,12 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git checkout -b minified-${{ github.ref_name }}
+        git checkout main
         git add minified/tool-${{ github.ref_name }}-min.js
         git commit -m "Add minified version: tool-${{ github.ref_name }}-min.js"
 
-    - name: Merge to Main
-      run: |
-        git checkout main
-        git merge minified-${{ github.ref_name }}
-        git push
+    # - name: Merge to Main
+    #   run: |
+    #     git checkout main
+    #     git merge minified-${{ github.ref_name }}
+    #     git push
