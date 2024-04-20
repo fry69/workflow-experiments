@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Install Bun
       shell: bash
@@ -32,6 +34,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git checkout -b ${{ github.ref_name }}
         git add minified/tool-${{ github.ref_name }}-min.js
         git commit -m "Add minified version: tool-${{ github.ref_name }}-min.js"
         git push
