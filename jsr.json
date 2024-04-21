@@ -1,0 +1,5 @@
+{
+    "name": "@/tool",
+    "version": "0.0.9",
+    "exports": "./tool.ts"
+}
